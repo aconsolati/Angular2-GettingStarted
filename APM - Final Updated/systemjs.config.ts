@@ -2,34 +2,38 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-var map = {
-    'app': 'app',
-    '@angular': 'node_modules/@angular',
-    'rxjs': 'node_modules/rxjs'
+const map:any = {
+  'app':                        'app',
+  '@angular':                   'node_modules/@angular',
+  'rxjs':                       'node_modules/rxjs'
 };
+
 /** User packages configuration. */
-var packages = {
-    'app': { main: 'main.js', defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' }
+const packages:any = {
+  'app':    { main: 'main.js',  defaultExtension: 'js' },
+  'rxjs':   { defaultExtension: 'js' }
 };
-var materialPkgs = [
-    'core',
-    'toolbar',
-    'icon',
-    'button',
-    'sidenav',
-    'list',
-    'card',
-    'input',
+
+const materialPkgs:string[] = [
+  'core',
+  'toolbar',
+  'icon',
+  'button',
+  'sidenav',
+  'list',
+  'card',
+  'input',
 ];
-materialPkgs.forEach(function (pkg) {
-    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
+
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
 });
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
  **********************************************************************************************/
-var packageNames = [
+const packageNames:string[] = [
     '@angular/common',
     '@angular/compiler',
     '@angular/core',
@@ -39,14 +43,19 @@ var packageNames = [
     '@angular/platform-browser-dynamic',
     '@angular/router'
 ];
-packageNames.forEach(function (packageName) {
-    packages[packageName] = { main: 'index', defaultExtension: 'js' };
+
+packageNames.forEach((packageName:string) => {
+  packages[packageName] = { main: 'index', defaultExtension: 'js' };
 });
+
+/** Type declaration for ambient System. */
+declare var System:any;
+
 // Apply the CLI SystemJS configuration.
 System.config({
-    map: map,
-    packages: packages
+  map: map,
+  packages: packages
 });
+
 // Apply the user's configuration.
-System.config({ map: map, packages: packages });
-//# sourceMappingURL=systemjs.config.js.map
+System.config({map, packages});
