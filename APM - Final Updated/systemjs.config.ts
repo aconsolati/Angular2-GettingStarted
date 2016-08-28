@@ -5,7 +5,8 @@
 const map:any = {
   'app':                        'app',
   '@angular':                   'node_modules/@angular',
-  'rxjs':                       'node_modules/rxjs'
+  'rxjs':                       'node_modules/rxjs',
+  '@angular2-material':         'node_modules/@angular2-material'
 };
 
 /** User packages configuration. */
